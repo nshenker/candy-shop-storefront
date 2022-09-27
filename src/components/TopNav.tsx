@@ -80,41 +80,6 @@ const TopNav: React.FC<TopNavProps> = ({ showCurrencyToggle = false }) => {
             <Link to={item.url}>{item.name}</Link>
           </li>
         ))}
-        <DropdownAnchor
-          ref={anchorRef}
-          onClick={handleToggle}
-          className={
-            OTHER_LAYOUT_ROUTES.some((item) => item.url === pathname)
-              ? "active"
-              : ""
-          }
-        >
-          Other Layouts
-          <Popper
-            open={open}
-            anchorEl={anchorRef.current}
-            role={undefined}
-            transition
-            disablePortal
-          >
-            <Paper>
-              <ClickAwayListener onClickAway={handleClose}>
-                <MenuList autoFocusItem={open} onKeyDown={handleListKeyDown}>
-                  {OTHER_LAYOUT_ROUTES.map((item) => (
-                    <MenuItem
-                      className={
-                        item.url === pathname ? "active active-submenu" : ""
-                      }
-                      key={item.url}
-                    >
-                      <Link to={item.url}>{item.name}</Link>
-                    </MenuItem>
-                  ))}
-                </MenuList>
-              </ClickAwayListener>
-            </Paper>
-          </Popper>
-        </DropdownAnchor>
       </Menu>
       {showCurrencyToggle && <CurrencyToggle />}
       <Wallet>
